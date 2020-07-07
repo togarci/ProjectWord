@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Project AR-JS</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'CSS/index.css' %}">
+        <script src="{% static 'JavaScript/index.js' %}"></script>
+        <script src="{% static 'JavaScript/marckerPosition.js' %}"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@500&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/2eaa7bf3a1.js" crossorigin="anonymous"></script>
+        <link rel="icon" type="imagem/png" href="{% static 'img/AR.js-1920-1080-HD.png' %}"/>
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <!-- we import arjs version without NFT but with marker + location based support -->
+        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    </head>
+    <body>
+        <div id="qdr_plv">
+
+        </div>
+
+
+        <!-- tag do ar-js -->
+        <!-- <a-scene embedded arjs> -->
+        <a-scene arjs='debudUIEnabled: false;'>
+            <!-- gltf-model="#Drill"  usado para vincular marcador com imagem 3D -->
+            <!-- tag dos marcadores -->
+            {% for x in word %}
+            <a-marker id="letraU" preset="pattern" type="pattern" url="https://raw.githubusercontent.com/FelippeAlves/project-words-AR/master/Markers/pattern-marker_{{ x }}.patt "></a-marker>
+            {% endfor %}
+<!-- 
+            <a-marker id="letraR" preset="pattern" type="pattern" url="https://raw.githubusercontent.com/FelippeAlves/project-words-AR/master/Markers/pattern-marker_R.patt"></a-marker>
+
+            <a-marker id="letraS" preset="pattern" type="pattern" url="https://raw.githubusercontent.com/FelippeAlves/project-words-AR/master/Markers/pattern-marker_S.patt"></a-marker>
+
+            <a-marker id="letraO" preset="pattern" type="pattern" url="https://raw.githubusercontent.com/FelippeAlves/project-words-AR/master/Markers/pattern-marker_O.patt"></a-marker> -->
+
+        </a-scene>
+        <div id="generico">
+            <div id="modal">
+                <i class="fas fa-times-circle"></i>
+                <img src="{% static 'img/baby_icon.jpg' %}" >
+                <div id="buttons">
+                    <i onclick="window.location.reload" class="fas fa-redo"></i>
+                    <i onclick="window.location.href = '/home'"class="fas fa-list"></i>
+                </div>
+            </div>
+        </div>
+
+    </body>
+    <script>
+        var csrftoken = `{{ csrf_token }}`
+        var word = `{{ word }}`
+        var username = `{{ request.user.username }}`
+
+    </script>
+</html>

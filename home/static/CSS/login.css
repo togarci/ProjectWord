@@ -1,0 +1,152 @@
+html{
+    height: auto;
+    width: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    background: rgb(140,133,246);
+    background: linear-gradient(40deg, rgba(140,133,246,1) 0%, rgba(116,116,254,1) 58%, rgba(0,212,255,1) 100%);
+    font: normal 15pt Arial;
+    height: 100%;
+}
+
+button{
+    background: none;
+    border: none;
+    width: 100px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+button:focus{
+    border: none;
+    outline: 0;
+}
+
+input:focus{
+    text-indent: 10px;
+    border: none;
+    outline: 0;
+}
+#title{
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+#lousa{
+    display: flex;
+    justify-content: center;
+}
+
+#imgLousa {
+    height: 320px;
+    width: 45%;
+    padding: 20px;
+}
+form {
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    position: absolute;
+    color: white;
+    border-radius: 10px;
+    margin-top: 48px;
+}
+button, input {
+    overflow: visible;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-left: 8px;
+    background-color: #ddd;
+}
+#senha{
+    width: 110px;
+}
+#entrar{
+    background-color: #ddd;
+    color:  rgb(133, 84, 224);
+    height: 50px;
+    font: bolder;
+    font-size: 15pt;
+    margin-left: 54px;
+    margin-top: 50px;
+}
+a{
+    color: white;
+}
+label{
+    color: white;
+}
+#cadastro{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+#btn-cadastrar{
+    width: 150px;
+    height: 40px;
+    margin-bottom: 28px;
+    margin-left: 30px;
+    background-color: #dddF ;
+    color: rgb(80, 48, 139);
+}
+
+/* .inputers{
+    width: 10%;
+    height: 10%;
+    position: absolute;
+    margin-top: 48px;
+}
+#input{
+    width: 210px;
+    height: 35px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 11pt;
+    margin-top: 20px;
+} */
+
+
+
+#git {
+    width: 90px;
+    height: 90px;
+}
+
+#mgit {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.links {
+    color: white;
+    font-family: 'Baloo Chettan 2', cursive;
+    text-align: center;
+    font-style: italic;
+}
+.links:hover{
+    color: white;
+
+}
+
+
+footer{
+    display: flex;
+    padding: 20px;
+    width: 100%;
+    justify-self: self-end;
+    background-color: rgba(0,0,0,0.7) ;
+    align-self: flex-end;
+    grid-row: 4;
+    grid-column: 1/4;
+}
+footer p{
+    color: rgb(0, 0, 0);
+    font-family: 'Baloo Chettan 2', cursive;
+    text-align: center;
+    font-style: italic;
+}

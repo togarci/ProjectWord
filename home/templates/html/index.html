@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-BR">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProjetoVR</title>
+    <link rel="stylesheet" href="{% static 'CSS/estilo.css' %}  ">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap" rel="stylesheet">
+    <script src="{% static 'JavaScript/script.js' %}"></script>
+    <script src="https://kit.fontawesome.com/2eaa7bf3a1.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="sair exit" >
+        <i class="exit fas fa-bars"></i>
+        <i class="exit fas fa-times"></i>
+    </div>
+    <header>
+        <img src="{% static 'img/title.png' %}" alt="">
+    </header>
+    <div class="botoes">
+        <button class="botao-fora">Instruções</button>
+        <a href="{% static 'Markers/Urso.pdf' %}"> <button class="botao-fora">Marcadores</button></a>
+    </div>
+    <aside class="exit">
+        <h3>{{ request.user.username }}</h3>
+        <nav class="exit">
+            <ul class="exit">
+                <li onclick="window.location.href = '/accounts/logout'">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <p>Logout</p>
+                </li>
+                <li>
+                    <i class="far fa-user"></i>
+                    <p>Perfil</p>
+                </li>
+
+            </ul>
+        </nav>
+    </aside>
+    <section>
+        {% for x in animais %}
+        <div class="btn" onclick="entrar('URSO')">
+            <img class="img-animals" id="{{ x.nome }}" >
+            {% if x.nome in listaFeitos %}
+            <i class="fas fa-check" ></i>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </section>
+    <footer>
+        <img src="{% static 'img/git1.png' %}" alt="" id="git">
+        <div id="mgit">
+            <a target="black" href="https://github.com/FelippeAlves" class="links">Felippe Alves</a>
+            <a target="black" href="https://github.com/nayaralorrane" class="links">Nayara Lorrane</a>
+            <a target="black" href="https://github.com/togarci" class="links">Thyago Garcia</a>
+        </div>
+    </footer>
+
+</body>
+<script type="text/javascript">
+    var divSair = document.querySelector(".sair");
+    var flag = false;
+    window.addEventListener("click", function(e){
+        click = e.target
+        if(click.className.includes("exit")){
+            if(flag){
+                document.querySelector("aside").style.right = "-290px";
+                document.querySelector(".fa-times").style.display = "none";
+                document.querySelector(".fa-bars").style.display = "flex";
+                flag = false;
+
+            }else{
+                document.querySelector("aside").style.right = "0px";
+                document.querySelector(".fa-times").style.display = "flex";
+                document.querySelector(".fa-bars").style.display = "none";
+                flag = true;
+            }
+        } else {
+            document.querySelector("aside").style.right = "-290px";
+            document.querySelector(".fa-times").style.display = "none";
+            document.querySelector(".fa-bars").style.display = "flex";
+            flag = false;
+        }
+    });
+    window.onload = function(){
+        imgs = document.querySelectorAll(".img-animals");
+        for(var x = 0; x != imgs.length; x++){
+            url = "/static/img/"+ imgs[x].id + ".png";
+            imgs[x].src = url;
+        }
+    }
+
+</script>
+</html>
